@@ -1,8 +1,6 @@
-package kethua.thuchanh.hecacdoituonghh;
-
 public class Shape {
-    private String color="green";
-    private boolean filled=true;
+    private String color = "green";
+    private boolean filled = true;
 
     public Shape() {
     }
@@ -27,6 +25,7 @@ public class Shape {
     public void setFilled(boolean filled) {
         this.filled = filled;
     }
+
     @Override
     public String toString() {
         return "A Shape with color of "
