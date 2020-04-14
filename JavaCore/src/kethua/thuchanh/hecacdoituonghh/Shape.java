@@ -1,3 +1,5 @@
+package kethua.thuchanh.hecacdoituonghh;
+
 public class Shape {
     private String color = "green";
     private boolean filled = true;

@@ -1,4 +1,8 @@
-public class Circle extends Shape {
+package kethua.thuchanh.hecacdoituonghh;
+
+import AdvancedObjectOrientedDesign.baitap.interfaceResizeable.Resizeable;
+
+public class Circle extends Shape implements Resizeable {
     private double radius = 1.0;
 
     public Circle() {
@@ -35,5 +39,10 @@ public class Circle extends Shape {
                 + getRadius()
                 + ", which is a subclass of "
                 + super.toString();
+    }
+
+    @Override
+    public void resize(double percent) {
+        System.out.println("Dien tich hinh tron luc nay la: "+(getArea()+getArea()*percent));
     }
 }

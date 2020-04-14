@@ -1,4 +1,10 @@
-public class Square extends Rectangle {
+package kethua.thuchanh.hecacdoituonghh;
+
+import AdvancedObjectOrientedDesign.baitap.interfaceColorable.Colorable;
+import AdvancedObjectOrientedDesign.baitap.interfaceResizeable.Resizeable;
+import kethua.thuchanh.hecacdoituonghh.Rectangle;
+
+public class Square extends Rectangle implements Resizeable, Colorable {
     public Square() {
     }
 
@@ -18,6 +24,9 @@ public class Square extends Rectangle {
         super.setWidth(side);
         super.setLength(side);
     }
+    public double getArea(){
+        return getSide()*getSide();
+    }
 
     @Override
     public void setWidth(double width) {
@@ -35,5 +44,14 @@ public class Square extends Rectangle {
                 + getSide()
                 + ", which is a subclass of "
                 + super.toString();
+    }
+    @Override
+    public void resize(double percent) {
+        System.out.println("Dien tich hinh vuong luc nay la: "+(getArea()+getArea()*percent));
+    }
+
+    @Override
+    public void howToColor() {
+        System.out.println("Color all four sides.");
     }
 }
