@@ -11,18 +11,18 @@ public class Main {
         shapes[0] = new Circle(5.4, "red", true);
         shapes[1] = new Rectangle(2.5, 5.4, "blue", true);
         shapes[2] = new Square(4.0, "black", true);
+//        Shape square=new Square();
+//        System.out.println(square instanceof Square);
+//        System.out.println(shapes[2] instanceof Square);
 
-
-        System.out.println(shapes[2].getSide());
-
-//        for (Shape shape : shapes) {
-//            if (shape instanceof Square) {
-//                ((Square) shape).howToColor();
-//            } else if (shape instanceof Circle) {
-//                System.out.println(((Circle) shape).getArea());
-//            } else if (shape instanceof Rectangle) {
-//                System.out.println(((Rectangle) shape).getArea());
-//            }
-//        }
+        for (Shape shape : shapes) {
+            if (shape instanceof Square) {
+                ((Square) shape).howToColor();
+            } else if (shape instanceof Circle) {
+                System.out.println(((Circle) shape).getArea());
+            } else if (shape instanceof Rectangle) {
+                System.out.println(((Rectangle) shape).getArea());
+            }
+        }
     }
 }
