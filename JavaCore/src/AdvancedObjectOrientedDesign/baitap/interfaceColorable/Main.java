@@ -11,18 +11,34 @@ public class Main {
         shapes[0] = new Circle(5.4, "red", true);
         shapes[1] = new Rectangle(2.5, 5.4, "blue", true);
         shapes[2] = new Square(4.0, "black", true);
-//        Shape square=new Square();
-//        System.out.println(square instanceof Square);
-//        System.out.println(shapes[2] instanceof Square);
 
-        for (Shape shape : shapes) {
-            if (shape instanceof Square) {
-                ((Square) shape).howToColor();
-            } else if (shape instanceof Circle) {
-                System.out.println(((Circle) shape).getArea());
-            } else if (shape instanceof Rectangle) {
-                System.out.println(((Rectangle) shape).getArea());
+        for (int i=0;i<shapes.length;i++){
+            if (shapes[i] instanceof Colorable) {
+                ((Colorable) shapes[i]).howToColor();
+                if (shapes[i] instanceof Square) {
+                    System.out.print("Dien tich hinh vuong: ");
+                    System.out.println(((Square) shapes[i]).getArea());
+                } else if (shapes[i] instanceof Circle) {
+                    System.out.print("Dien tich hinh tron: ");
+                    System.out.println(((Circle) shapes[i]).getArea());
+                } else if (shapes[i] instanceof Rectangle) {
+                    System.out.print("Dien tich hinh chu nhat:");
+                    System.out.println(((Rectangle) shapes[i]).getArea());
+                }
+            } else {
+                if (shapes[i] instanceof Square) {
+                    System.out.print("Dien tich hinh vuong: ");
+                    System.out.println(((Square) shapes[i]).getArea());
+                } else if (shapes[i] instanceof Circle) {
+                    System.out.print("Dien tich hinh tron: ");
+                    System.out.println(((Circle) shapes[i]).getArea());
+                } else if (shapes[i] instanceof Rectangle) {
+                    System.out.print("Dien tich hinh chu nhat:");
+                    System.out.println(((Rectangle) shapes[i]).getArea());
+                }
             }
         }
+
+
     }
 }

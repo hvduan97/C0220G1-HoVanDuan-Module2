@@ -15,8 +15,15 @@ public class CircleComparatorTest {
         for (Circle circle : circles) {
             System.out.println(circle);
         }
-        Comparator circleComparator = new CircleComparator();
-//        Arrays.sort(circles, circleComparator);
+//        Comparator circleComparator = new CircleComparator();
+        Arrays.sort(circles, new Comparator<Circle>() {
+            @Override
+            public int compare(Circle c1, Circle c2) {
+                if (c1.getRadius() > c2.getRadius()) return 1;
+                else if (c1.getRadius() < c2.getRadius()) return -1;
+                else return 0;
+            }
+        });
 
         System.out.println("After-sorted:");
         for (Circle circle : circles) {
