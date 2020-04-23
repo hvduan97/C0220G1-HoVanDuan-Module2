@@ -28,11 +28,12 @@ public class MyArrayList<E> {
             elements[i]=0;
         }
     }
-    public void add(E e) {
+    public boolean add(E e) {
         if (size == elements.length) {
             ensureCapacity(5);
         }
         elements[size++] = e;
+        return true;
     }
     private void ensureCapacity(int minCapacity){
         if (minCapacity >= 0) {
@@ -94,5 +95,10 @@ public class MyArrayList<E> {
         elements[size-1]=null;
         size--;
         return element;
+    }
+    public void printArray(){
+        for (int i=0;i<size;i++){
+            System.out.print(elements[i]+" ");
+        }
     }
 }
