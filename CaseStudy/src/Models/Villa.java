@@ -71,4 +71,16 @@ public class Villa extends Services {
         +"So tang: "+getNumberFloor()+"\n"
         +"ID: "+getId());
     }
+    public String toString(){
+        return /*"Ten dich vu: "+*/getNameService()/*+"\n"*/;
+                /*+"Dien tich su dung: "+getAreaUsed()+"\n"
+                +"Chi phi thue: "+getRentalFee()+"\n"
+                +"So nguoi toi da: "+getMaxPeople()+"\n"
+                +"Kieu thue: "+getTypeRent()+"\n"
+                +"Tieu chuan phong: "+getStandardRoom()+"\n"
+                +"Mo ta tien nghi khac: "+getDescriptionAmenities()+"\n"
+                +"Dien tich ho boi: "+getPoolArea()+"\n"
+                +"So tang: "+getNumberFloor()+"\n"
+                +"ID: "+getId();*/
+    }
 }

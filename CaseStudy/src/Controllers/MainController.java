@@ -11,27 +11,140 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class MainController {
-//    private Object ArrayList;
-//    private Object Villa;
-
     public MainController() {
     }
     List<Villa> villas=new ArrayList<Villa>();
     List<House> houses=new ArrayList<House>();
     List<Room> rooms=new ArrayList<Room>();
+    List<Customer> customers=new ArrayList<Customer>();
+    public static String inputPhone() {
+        Scanner scanner=new Scanner(System.in);
+        boolean flag = true;
+        String phone;
+        do {
+            System.out.print("Nhap so dien thoai: ");
+            phone = scanner.nextLine();
+            String regex="^[0]{1}[0-9]{9}$";
+            boolean matcher=Pattern.matches(regex,phone);
+            if (matcher) {
+                flag = false;
+            } else {
+                System.out.println("SDT phai co 10 so. Vui long nhap lai.");
+            }
+        } while (flag);
+        return phone;
+    }
+    public static String inputTypeCustomer() {
+        Scanner scanner=new Scanner(System.in);
+        boolean flag = true;
+        String typeCustomer;
+        do {
+            System.out.print("Nhap loai khach hang Diamond, Platinium, Gold, Silver, Member: ");
+            typeCustomer = scanner.nextLine();
+            String regex="^Diamond|Platinium|Gold|Silver|Member$";
+            boolean matcher=Pattern.matches(regex,typeCustomer);
+            if (matcher) {
+                flag = false;
+            } else {
+                System.out.println("Ban phai nhap Diamond, Platinium, Gold, Silver, Member. Vui long nhap lai.");
+            }
+        } while (flag);
+        return typeCustomer;
+    }
+    public static String inputBirthDay() {
+        Scanner scanner=new Scanner(System.in);
+        boolean flag = true;
+        String birthDay;
+        do {
+            System.out.print("Nhap ngay thang nam sinh: ");
+            birthDay = scanner.nextLine();
+            String regex="^([1-9]{1}|[0]{1}[1-9]{1}|[1-2]{1}[0-9]{1}|[3]{1}[0-1]{1})/([1-9]{1}|[0]{1}[1-9]{1}|[1]{1}[0-2]{1})/(([1]{1}[9]{1}[0-9]{2})|(([2]{1}[0]{1}[0-2]{1}[0-9]{1})|([2]{1}[0]{1}[3]{1}[0-8]{1})))$";
+            boolean matcher=Pattern.matches(regex,birthDay);
+            if (matcher) {
+                flag = false;
+            } else {
+                System.out.println("Nam sinh phai >1900 va <2038, dung dinh dang dd/yy/yyyy. Vui long nhap lai.");
+            }
+        } while (flag);
+        return birthDay;
+    }
+    public static String inputIdCard() {
+        Scanner scanner=new Scanner(System.in);
+        boolean flag = true;
+        String idCard;
+        do {
+            System.out.print("Nhap CMND: ");
+            idCard = scanner.nextLine();
+            String regex="^[0-9]{3}\\s[0-9]{3}\\s[0-9]{3}$";
+            boolean matcher=Pattern.matches(regex,idCard);
+            if (matcher) {
+                flag = false;
+            } else {
+                System.out.println("CMND phai co 9 so va theo dinh dang XXX XXX XXX. Vui long nhap lai.");
+            }
+        } while (flag);
+        return idCard;
+    }
+    public static String inputGender() {
+        Scanner scanner=new Scanner(System.in);
+        String email;
+        System.out.print("Nhap gioi tinh: ");
+        email = scanner.nextLine();
+        String regex="Male|Female|Unknown";
+        boolean matcher=Pattern.matches(regex,email);
+        if (matcher) {
+            return email;
+        } else {
+            return "Unknown";
+        }
+    }
+    public static String inputEmail() {
+        Scanner scanner=new Scanner(System.in);
+        boolean flag = true;
+        String email;
+        do {
+            System.out.print("Nhap dia chi Email: ");
+            email = scanner.nextLine();
+            String regex="^[a-z0-9A-Z]{1,}@[a-z]{1,}.[a-z]{1,}$";
+            boolean matcher=Pattern.matches(regex,email);
+            if (matcher) {
+                flag = false;
+            } else {
+                System.out.println("Emai phai dung dinh dang: abc@abc.abc . Vui long nhap lai.");
+            }
+        } while (flag);
+        return email;
+    }
+    public static String inputNameCustomer() {
+        Scanner scanner=new Scanner(System.in);
+        boolean flag = true;
+        String nameCustomer;
+        do {
+            System.out.print("Nhap ten khach hang: ");
+            nameCustomer = scanner.nextLine();
+            String regex="^[A-Z]{1}[a-z]{0,}(\\s{1}[A-Z]{1}[a-z]{0,}){0,}$";
+            boolean matcher=Pattern.matches(regex,nameCustomer);
+            if (matcher) {
+                flag = false;
+            } else {
+                System.out.println("Ten khach hang phai in hoa ki tu dau tien trong moi tu. Vui long nhap lai.");
+            }
+        } while (flag);
+        return nameCustomer;
+    }
     public static String inputDescriptionAmenities() {
         Scanner scanner=new Scanner(System.in);
         boolean flag = true;
         String descriptionAmenities;
         do {
-            System.out.print("Nhap vao tien nghi(massage, karaoke, food, drink, car): ");
+            System.out.print("Nhap vao tien nghi(tv, playstation, food, drink): ");
             descriptionAmenities = scanner.nextLine();
-            String regex="massage|karaoke|food|drink|car";
+            String regex="tv|playstation|food|drink";
             boolean matcher=Pattern.matches(regex,descriptionAmenities);
             if (matcher) {
                 flag = false;
             } else {
-                System.out.println("Format True: Nhap massage, karaoke, food, drink, car. Vui long nhap lai.");
+                System.out.println("Format True: Nhap tv, playstation, food, drink. Vui long nhap lai.");
             }
         } while (flag);
         return descriptionAmenities;
@@ -131,14 +244,14 @@ public class MainController {
         boolean flag = true;
         String standardRoom;
         do {
-            System.out.print("Nhap vao tieu chuan phong (Normal|Premium|VIP): ");
+            System.out.print("Nhap vao tieu chuan phong (Normal|Business|VIP): ");
             standardRoom = scanner.nextLine();
-            String regex="Normal|Premium|VIP";
+            String regex="Normal|Business|VIP";
             boolean matcher=Pattern.matches(regex,standardRoom);
             if (matcher) {
                 flag = false;
             } else {
-                System.out.println("Format True: Normal|Premium|VIP. Vui long nhap lai.");
+                System.out.println("Format True: Normal|Business|VIP. Vui long nhap lai.");
             }
         } while (flag);
         return standardRoom;
@@ -237,6 +350,7 @@ public class MainController {
             case 8:{System.exit(0);}break;
         }
     }
+
     public void addNewCustomer(){
         System.out.println("Add New Customer");
     }
@@ -282,11 +396,11 @@ public class MainController {
             }
             break;
             case 3:{
-                addNewCustomer();
+                Customer.addNewCustomer(customers);
             }
             break;
             case 4:{
-                showInformationOfCustomer();
+                Customer.showInformationCustomers(customers);
             }
             break;
             case 5:{

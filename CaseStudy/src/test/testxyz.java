@@ -6,23 +6,23 @@ import java.util.regex.Pattern;
 
 public class testxyz {
     public static void main(String[] args) {
-       inputDescriptionAmenities();
+        System.out.println(inputPhone());
     }
-    public static String inputDescriptionAmenities() {
+    public static String inputPhone() {
         Scanner scanner=new Scanner(System.in);
         boolean flag = true;
-        String descriptionAmenities;
+        String phone;
         do {
-            System.out.print("Nhap vao tien nghi: ");
-            descriptionAmenities = scanner.nextLine();
-            String regex="massage|karaoke|food|drink|car";
-            boolean matcher=Pattern.matches(regex,descriptionAmenities);
+            System.out.print("Nhap so dien thoai: ");
+            phone = scanner.nextLine();
+            String regex="^[0]{1}[0-9]{9}$";
+            boolean matcher=Pattern.matches(regex,phone);
             if (matcher) {
                 flag = false;
             } else {
-                System.out.println("Format True: Nhap massage, karaoke, food, drink, car. Vui long nhap lai.");
+                System.out.println("SDT phai co 10 so. Vui long nhap lai.");
             }
         } while (flag);
-        return descriptionAmenities;
+        return phone;
     }
 }
