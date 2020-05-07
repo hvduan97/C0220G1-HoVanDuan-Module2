@@ -7,8 +7,40 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class FileShowVilla {
+    public TreeSet<String> readCsvVillaNotDuplicate() throws IOException {
+        BufferedReader fileReader = new BufferedReader(new FileReader("D:\\CodegymMD2\\CaseStudy\\src\\Data\\Villa.csv"));
+        TreeSet<String> listVillaNotDuplicate = new TreeSet<>();
+        String line;
+        while ((line = fileReader.readLine()) != null) {
+            String[] splitData = line.split(",");
+            listVillaNotDuplicate.add(splitData[0]);
+        }
+        return listVillaNotDuplicate;
+    }
+
+    public List<Villa> readCsvVilla() throws IOException {
+        BufferedReader fileReader = new BufferedReader(new FileReader("D:\\CodegymMD2\\CaseStudy\\src\\Data\\Villa.csv"));
+        List<Villa> listVilla = new ArrayList<>();
+        String line;
+        while ((line = fileReader.readLine()) != null) {
+            String[] splitData = line.split(",");
+            Villa villa = new Villa(splitData[0],
+                    Double.parseDouble(splitData[1]),
+                    Double.parseDouble(splitData[2]),
+                    Integer.parseInt(splitData[3]),
+                    (splitData[4]),
+                    splitData[5],
+                    splitData[6],
+                    splitData[7],
+                    Double.parseDouble(splitData[8]),
+                    Integer.parseInt(splitData[9]));
+            listVilla.add(villa);
+        }
+        return listVilla;
+    }
     private static final String COMMA_DELIMITER = ","; // Split by comma
 
     public static void showMain(List<Villa> villas) {

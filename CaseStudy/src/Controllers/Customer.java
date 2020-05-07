@@ -3,15 +3,11 @@ package Controllers;
 import Models.Services;
 import Models.Villa;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import javax.swing.*;
+import java.io.*;
+import java.util.*;
 
-public class Customer {
+public class Customer{
     private String nameCustomer;
     private String birthDay;
     private String gender;
@@ -108,67 +104,31 @@ public class Customer {
         this.services = services;
     }
 
-    public void showInfor(){
-        System.out.println("Ten khach hang: "+getNameCustomer()+"\n"
-                +"Ngay Sinh: "+getBirthDay()+"\n"
-                +"Gioi tinh: "+getGender()+"\n"
-                +"So CMND: "+getIdCard()+"\n"
-                +"Dien thoai: "+getPhone()+"\n"
-                +"Email: "+getEmail()+"\n"
-                +"Loai khach hang: "+getTypeCustomer()+"\n"
-                +"Dia chi: "+getAddress()+"\n"
-                /*+"Su dung dich vu: "*//*+getServices()+"\n"*/);
+    public String showInfor(){
+        if (getServices() == null) {
+            return "Ten khach hang: "+getNameCustomer()+"\n"
+                    +"Ngay Sinh: "+getBirthDay()+"\n"
+                    +"Gioi tinh: "+getGender()+"\n"
+                    +"So CMND: "+getIdCard()+"\n"
+                    +"Dien thoai: "+getPhone()+"\n"
+                    +"Email: "+getEmail()+"\n"
+                    +"Loai khach hang: "+getTypeCustomer()+"\n"
+                    +"Dia chi: "+getAddress()+"\n";
+        } else {
+            return "Ten khach hang: "+getNameCustomer()+"\n"
+                    +"Ngay Sinh: "+getBirthDay()+"\n"
+                    +"Gioi tinh: "+getGender()+"\n"
+                    +"So CMND: "+getIdCard()+"\n"
+                    +"Dien thoai: "+getPhone()+"\n"
+                    +"Email: "+getEmail()+"\n"
+                    +"Loai khach hang: "+getTypeCustomer()+"\n"
+                    +"Dia chi: "+getAddress()+"\n"
+                    +"Su dung dich vu: "+this.getServices()+"\n";
+        }
     }
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
-    public static void showInformationCustomers(List<Customer> customers){
-        BufferedReader br = null;
-        try {
-            String line;
-            br = new BufferedReader(new FileReader("D:\\CodegymMD2\\CaseStudy\\src\\Data\\Customer.csv"));
 
-            // How to read file in java line by line?
-            while ((line = br.readLine()) != null) {
-                printContry(parseCsvLine(line));
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (br != null)
-                    br.close();
-            } catch (IOException crunchifyException) {
-                crunchifyException.printStackTrace();
-            }
-        }
-    }
-
-    public static List<String> parseCsvLine(String csvLine) {
-        List<String> result = new ArrayList<String>();
-        if (csvLine != null) {
-            String[] splitData = csvLine.split(COMMA_DELIMITER);
-            for (int i = 0; i < splitData.length; i++) {
-                result.add(splitData[i]);
-            }
-        }
-        return result;
-    }
-
-    private static void printContry(List<String> customers) {
-        System.out.println(
-                "Customer [ Ten khach hang= "
-                        + customers.get(0)
-                        + ", Ngay sinh= " + customers.get(1)
-                        + " , Gioi tinh= " + customers.get(2)
-                        + " , So CMND= " + customers.get(3)
-                        + " , So dien thoai= " + customers.get(4)
-                        + " , Email= " + customers.get(5)
-                        + " , Loai khach= " + customers.get(6)
-                        + " , Dia chi= " + customers.get(7)
-                        /*+ " , Su dung dich vu= " + customers.get(8)*/
-                        + "]");
-    }
     public static void addNewCustomer(List<Customer> customers){
             Scanner scanner=new Scanner(System.in);
             String nameCustomer=MainController.inputNameCustomer();
@@ -178,6 +138,7 @@ public class Customer {
             String phone=MainController.inputPhone();
             String email=MainController.inputEmail();
             String typeCustomer=MainController.inputTypeCustomer();
+            System.out.print("Nhap dia chi:");
             String address=scanner.nextLine();
 
             Customer customer=new Customer(nameCustomer, birthDay, gender, idCard, phone, email, typeCustomer, address);
@@ -203,8 +164,6 @@ public class Customer {
                     fileWriter.append(COMMA_DELIMITER );
                     fileWriter.append(address);
                     fileWriter.append(COMMA_DELIMITER );
-                    /*fileWriter.append(String.valueOf(Services));
-                    fileWriter.append(COMMA_DELIMITER );*/
                     fileWriter.append(NEW_LINE_SEPARATOR);
                 }
 
@@ -223,5 +182,4 @@ public class Customer {
                 }
             }
     }
-
 }

@@ -5,9 +5,7 @@ import Models.Room;
 import Models.Villa;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class MainController {
@@ -17,6 +15,209 @@ public class MainController {
     List<House> houses=new ArrayList<House>();
     List<Room> rooms=new ArrayList<Room>();
     List<Customer> customers=new ArrayList<Customer>();
+    TreeSet<String> listRoomNotDuplicate = new TreeSet<>();
+    TreeSet<String> listHouseNotDuplicate = new TreeSet<>();
+    TreeSet<String> listVillaNotDuplicate = new TreeSet<>();
+    public void findEmployee(){
+        TuHoSo tuHoSo=new TuHoSo();
+        try {
+            tuHoSo.readCsvEmployee();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void bookingMovieTicket4D(){
+        Cinema4D.cinema();
+    }
+    public void showInformationEmployee(){
+        FileShowEmployee readCsvEmployee = new FileShowEmployee();
+        try {
+            readCsvEmployee.readCsvEmployee();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void showAllNameRoomNotDuplicate() throws IOException {
+        FileShowRoom readCsvRoom = new FileShowRoom();
+        listRoomNotDuplicate = readCsvRoom.readCsvRoomNotDuplicate();
+        int i = 0;
+        System.out.println("List Name Room Not Duplicate: ");
+        for (String listRoom : listRoomNotDuplicate) {
+            i++;
+            System.out.println(i + "." + listRoom);
+            System.out.println("------------------------------------------------------------------------");
+        }
+    }
+    public void showAllNameHouseNotDuplicate() throws IOException {
+        FileShowHouse readCsvHouse = new FileShowHouse();
+        listHouseNotDuplicate = readCsvHouse.readCsvHouseNotDuplicate();
+        int i = 0;
+        System.out.println("List Name House Not Duplicate: ");
+        for (String listHouse : listHouseNotDuplicate) {
+            i++;
+            System.out.println(i + "." + listHouse);
+            System.out.println("------------------------------------------------------------------------");
+        }
+    }
+    public void showAllNameVillaNotDuplicate() throws IOException {
+        FileShowVilla readCsvVilla = new FileShowVilla();
+        listVillaNotDuplicate = readCsvVilla.readCsvVillaNotDuplicate();
+        int i = 0;
+        System.out.println("List Name House Not Duplicate: ");
+        for (String listVilla : listVillaNotDuplicate) {
+            i++;
+            System.out.println(i + "." + listVilla);
+            System.out.println("------------------------------------------------------------------------");
+        }
+    }
+    public void addServicesRoom(Customer customer) throws IOException {
+        FileWriteBooking writeCsvBooking = new FileWriteBooking();
+        FileShowRoom readCsvRoom = new FileShowRoom();
+        Scanner scanner = new Scanner(System.in);
+        rooms = readCsvRoom.readCsvRoom();
+        System.out.println("-------------------------->");
+        System.out.println("List Room: ");
+        for (int i = 0; i < rooms.size(); i++) {
+            System.out.println((i + 1) + ". ID: " + rooms.get(i).getId() + ". Room Name: " + rooms.get(i).getNameService()
+                    + ". Have Rental Costs:" + rooms.get(i).getRentalFee());
+            System.out.println("............................THE END............................");
+        }
+        String choose;
+        Room services = null;
+        boolean flag = true;
+        do {
+            System.out.print("Choose Room you want to booking: ");
+            choose = scanner.nextLine();
+            if (Integer.parseInt(choose) > 0 && Integer.parseInt(choose) <= rooms.size()) {
+                services = rooms.get(Integer.parseInt(choose) - 1);
+                flag = false;
+            } else {
+                System.out.println("Enter again: ");
+            }
+        } while (flag);
+        customer.setServices(services);
+        writeCsvBooking.writeCsvBookingRoomFile(customer, services);
+    }
+    public void addServicesHouse(Customer customer) throws IOException {
+        FileWriteBooking writeCsvBooking = new FileWriteBooking();
+        FileShowHouse readCsvHouse = new FileShowHouse();
+        Scanner scanner = new Scanner(System.in);
+        houses = readCsvHouse.readCsvHouse();
+        System.out.println("-------------------------->");
+        System.out.println("House List: ");
+        for (int i = 0; i < houses.size(); i++) {
+            System.out.println((i + 1) + ". ID: " + houses.get(i).getId() + ". House Name: " + houses.get(i).getNameService() + ". Stand Room: "
+                    + houses.get(i).getStandardRoom() + ". Rental Costs: " + houses.get(i).getRentalFee());
+            System.out.println("............................THE END............................");
+        }
+        String choose;
+        House services = null;
+        boolean flag = true;
+        do {
+            System.out.print("Choose House you want to booking: ");
+            choose = scanner.nextLine();
+            if (Integer.parseInt(choose) > 0 && Integer.parseInt(choose) <= houses.size()) {
+                services = houses.get(Integer.parseInt(choose) - 1);
+                flag = false;
+            } else {
+                System.out.println("Enter again: ");
+            }
+        } while (flag);
+        customer.setServices(services);
+        writeCsvBooking.writeCsvBookingHouseFile(customer, services);
+    }
+    public void addServicesVilla(Customer customer) throws IOException {
+        FileWriteBooking writeCsvBooking = new FileWriteBooking();
+        FileShowVilla readCsvVilla = new FileShowVilla();
+        Scanner scanner = new Scanner(System.in);
+        villas=readCsvVilla.readCsvVilla();
+        System.out.println("-------------------------->");
+        System.out.println("Villa List: ");
+        for (int i = 0; i < villas.size(); i++) {
+            System.out.println((i + 1) + ". ID: " + villas.get(i).getId() + ". Name Villa: " + villas.get(i).getNameService() + ". Standard Room: "
+                    + villas.get(i).getStandardRoom() + ". Rental Costs: " + villas.get(i).getRentalFee());
+            System.out.println("............................THE END............................");
+        }
+        String choose;
+        Villa services = null;
+        boolean flag = true;
+        do {
+            System.out.print("Choose Villa you want to booking: ");
+            choose = scanner.nextLine();
+            if (Integer.parseInt(choose) > 0 && Integer.parseInt(choose) <= villas.size()) {
+                services = villas.get(Integer.parseInt(choose) - 1);
+                flag = false;
+            } else {
+                System.out.println("Enter again: ");
+            }
+        } while (flag);
+        customer.setServices(services);
+        writeCsvBooking.writeCsvBookingVillaFile(customer, services);
+    }
+    public void addNewBook() throws IOException {
+        ReadCsvCustomer readCsvCustomer = new ReadCsvCustomer();
+        Scanner scanner = new Scanner(System.in);
+        customers = readCsvCustomer.readCsvCustomer();
+        System.out.println("-------------------------->");
+        System.out.println("Customer List: ");
+        for (int i = 0; i < customers.size(); i++) {
+            System.out.println((i + 1) + ". Name Customer: " + customers.get(i).getNameCustomer() + ". ID Customer" + customers.get(i).getIdCard() + ". Birthday Customer: "
+                    + customers.get(i).getBirthDay());
+            System.out.println("............................THE END............................");
+        }
+        Customer customer = null;
+        String choose;
+        boolean flag = true;
+        do {
+            System.out.print("Choose CUSTOMER you want: ");
+            choose = scanner.nextLine();
+            if (Integer.parseInt(choose) > 0 && Integer.parseInt(choose) <= customers.size()) {
+                customer = customers.get(Integer.parseInt(choose) - 1);
+                flag = false;
+            } else {
+                System.out.println("Enter again: ");
+            }
+        } while (flag);
+        newBook(customer);
+    }
+
+    public void newBook(Customer customer) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        String choose;
+        do {
+            System.out.println("-------------------------->");
+            System.out.println("Booking List: ");
+            System.out.println("1.Booking Villa\n" +
+                    "2.Booking House\n" +
+                    "3.Booking Room\n" +
+                    "4.Back to menu\n" +
+                    "5.exit\n");
+            System.out.print("Choose number you want to we do: ");
+            choose = scanner.nextLine();
+            switch (choose) {
+                case "1":
+                    addServicesVilla(customer);
+                    break;
+                case "2":
+                    addServicesHouse(customer);
+                    break;
+                case "3":
+                    addServicesRoom(customer);
+                    break;
+                case "4":
+                   displayMainMenu();
+                    break;
+                case "5":
+                    System.exit(1);
+                    break;
+                default:
+                    System.out.println("Enter again: ");
+                    this.addNewBook();
+                    break;
+            }
+        } while (true);
+    }
     public static String inputPhone() {
         Scanner scanner=new Scanner(System.in);
         boolean flag = true;
@@ -338,40 +539,19 @@ public class MainController {
             case 2:{FileShowHouse.showMain(houses);}break;
             case 3:{FileShowRoom.showMain(rooms);}break;
             case 4:{
-                System.out.println("case4Tast8");
+                showAllNameVillaNotDuplicate();
             }break;
             case 5:{
-                System.out.println("cas5Tast8");
+                showAllNameHouseNotDuplicate();
             }break;
             case 6:{
-                System.out.println("case6Tast8");
+                showAllNameRoomNotDuplicate();
             }break;
             case 7:{displayMainMenu();}break;
             case 8:{System.exit(0);}break;
         }
     }
 
-    public void addNewCustomer(){
-        System.out.println("Add New Customer");
-    }
-    public void showInformationOfCustomer(){
-        System.out.println("Show Information of Customer");
-    }
-    public void addNewBooking(){
-        System.out.println("Add New Booking");
-    }
-    public void showInformationOfEmployee(){
-        System.out.println("Show Information of Employee");
-    }
-    public void bookingMovieTicket4D(){
-        System.out.println("Booking Movie Ticket 4D");
-    }
-    public void findEmployee(){
-        System.out.println("Find Employee");
-    }
-    public void exit(){
-        System.out.println("Exit");
-    }
     public void displayMainMenu() throws IOException {
         Scanner scanner=new Scanner(System.in);
         System.out.println("Menu lua chon:");
@@ -400,15 +580,22 @@ public class MainController {
             }
             break;
             case 4:{
-                Customer.showInformationCustomers(customers);
+
+                ReadCsvCustomer readCsvCustomer = new ReadCsvCustomer();
+                customers = readCsvCustomer.readCsvCustomer();
+                for (Customer ct : customers) {
+                    System.out.println("--------------------------------------------------------------------------------");
+                    System.out.println(ct.showInfor());
+                    System.out.println("--------------------------------------------------------------------------------");
+                }
             }
             break;
             case 5:{
-                addNewBooking();
+                addNewBook();
             }
             break;
             case 6:{
-                showInformationOfEmployee();
+                showInformationEmployee();
             }
             break;
             case 7:{
@@ -420,7 +607,7 @@ public class MainController {
             }
             break;
             case 9:{
-                exit();
+                System.exit(0);
             }
             break;
 

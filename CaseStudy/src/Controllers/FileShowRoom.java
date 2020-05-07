@@ -8,8 +8,37 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class FileShowRoom {
+    public TreeSet<String> readCsvRoomNotDuplicate() throws IOException {
+        BufferedReader fileReader = new BufferedReader(new FileReader("D:\\CodegymMD2\\CaseStudy\\src\\Data\\Room.csv"));
+        TreeSet<String> listRoomNotDuplicate = new TreeSet<>();
+        String line;
+        while ((line = fileReader.readLine()) != null) {
+            String[] splitData = line.split(",");
+            listRoomNotDuplicate.add(splitData[0]);
+        }
+        return listRoomNotDuplicate;
+    }
+    public List<Room> readCsvRoom() throws IOException {
+        BufferedReader fileReader = new BufferedReader(new FileReader("D:\\CodegymMD2\\CaseStudy\\src\\Data\\Room.csv"));
+        List<Room> listRoom = new ArrayList<>();
+        String line;
+        while ((line = fileReader.readLine()) != null) {
+            String[] splitData = line.split(",");
+            Room room = new Room(splitData[0],
+                    Double.parseDouble(splitData[1]),
+                    Double.parseDouble(splitData[2]),
+                    Integer.parseInt(splitData[3]),
+                    (splitData[4]),
+                    splitData[5],
+                    splitData[6]
+            );
+            listRoom.add(room);
+        }
+        return listRoom;
+    }
     private static final String COMMA_DELIMITER = ","; // Split by comma
 
     public static void showMain(List<Room> rooms) {
