@@ -24,3 +24,8 @@ inner join casestudy.dichvu on casestudy.dichvu.IDDichVu=casestudy.hopdong.IDDic
 inner join casestudy.hopdongchitiet on casestudy.hopdong.IDHopDong=casestudy.hopdongchitiet.IDHopDong
 where exists(select casestudy.hopdong.IDHopDong from casestudy.hopdong where ((casestudy.hopdong.ngaylamhopdong) between '2019-10-1' and '2019-12-31'))
 and not exists(select casestudy.hopdong.IDHopDong from casestudy.hopdong where ((casestudy.hopdong.ngaylamhopdong) between '2019-1-1' and '2019-6-30'))
+
+
+
+
+

@@ -13,7 +13,7 @@ and not exists(select casestudy.hopdong.IDHopDong from casestudy.hopdong where y
 
 
 insert into casestudy.hopdong(IDHopDong,NgayLamHopDong,NgayKetThuc,TienDatCong,TongTien,IDNhanVien,IDKhachHang,IDDichVu)
-values(15,'2017-11-11','2017-11-30',12,null,2,3,2);
+values(100,'2018-11-11','2018-11-30',12,null,2,3,1);
 insert into casestudy.hopdong(IDHopDong,NgayLamHopDong,NgayKetThuc,TienDatCong,TongTien,IDNhanVien,IDKhachHang,IDDichVu)
 values(16,'2018-2-11','2019-11-30',10,null,1,4,2);
 insert into casestudy.hopdong(IDHopDong,NgayLamHopDong,NgayKetThuc,TienDatCong,TongTien,IDNhanVien,IDKhachHang,IDDichVu)

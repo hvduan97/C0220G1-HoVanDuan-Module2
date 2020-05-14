@@ -6,7 +6,7 @@ select casestudy.hopdong.IDKhachHang,casestudy.khachhang.HoTen as TenKhachHang, 
 from casestudy.hopdong
 inner join casestudy.khachhang on casestudy.khachhang.IDKhachHang=casestudy.hopdong.IDKhachHang
 inner join casestudy.loaikhach on casestudy.khachhang.IDLoaiKhachHang=casestudy.loaikhach.IDLoaiKhachHang
-where (year(casestudy.hopdong.ngaylamhopdong)='2019' and casestudy.loaikhach.TenLoaiKhach='Platinium')
+where (year(casestudy.hopdong.ngaylamhopdong)='2019' and casestudy.loaikhach.TenLoaiKhach='Diamond')
 group by casestudy.hopdong.IDKhachHang
 having sum(casestudy.hopdong.TongTien)>10000000;
 

@@ -53,4 +53,4 @@ set HoTen='Hong'
 where IDNhanVien=4;
 
 select* from casestudy.nhanvien
-where ((HoTen like 'K%') or (HoTen like 'H%') or (HoTen like 'T%')) and length(HoTen)<15;
+where ((HoTen like 'K%') or (HoTen like 'H%') or (HoTen like 'T%')) and length(HoTen)<16;

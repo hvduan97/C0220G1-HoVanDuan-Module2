@@ -20,9 +20,9 @@ values(14,'2019-3-11','2017-11-30',12,null,2,7,2);
 select casestudy.dichvu.IDDichVu,casestudy.dichvu.TenDichVu,casestudy.dichvu.DienTich,casestudy.dichvu.ChiPhiThue,
 casestudy.loaidichvu.TenLoaiDichVu
 from casestudy.dichvu
-join casestudy.loaidichvu
+inner join casestudy.loaidichvu
 on casestudy.dichvu.IDDichVu=casestudy.loaidichvu.IDLoaiDichVu
-join casestudy.hopdong
+inner join casestudy.hopdong
 on casestudy.hopdong.IDDichVu=casestudy.dichvu.IDDichVu
 where (year(casestudy.hopdong.NgayLamHopDong) and month(casestudy.hopdong.NgayLamHopDong)) not in ((year(casestudy.hopdong.NgayLamHopDong)=2019 and month(casestudy.hopdong.NgayLamHopDong)=1)
 or (year(casestudy.hopdong.NgayLamHopDong)=2019 and month(casestudy.hopdong.NgayLamHopDong)=2)

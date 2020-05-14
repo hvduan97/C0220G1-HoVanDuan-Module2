@@ -10,13 +10,13 @@ insert into casestudy.dichvudikem(IDDichVuDiKem,TenDichVuDiKem,Gia,DonVi,TrangTh
 values(5,'thuê xe',30,1000,'Con');
 
 insert into casestudy.hopdongchitiet(IDHopDongChiTiet,IDHopDong,IDDichVuDiKem,SoLuong)
-values(1,3,5,5);
+values(400,400,5,5);
 insert into casestudy.hopdongchitiet(IDHopDongChiTiet,IDHopDong,IDDichVuDiKem,SoLuong)
-values(2,2,5,1);
+values(401,402,1,1);
 insert into casestudy.hopdongchitiet(IDHopDongChiTiet,IDHopDong,IDDichVuDiKem,SoLuong)
-values(3,5,4,2);
+values(402,403,3,2);
 insert into casestudy.hopdongchitiet(IDHopDongChiTiet,IDHopDong,IDDichVuDiKem,SoLuong)
-values(4,4,5,5);
+values(403,404,1,5);
 
 
 

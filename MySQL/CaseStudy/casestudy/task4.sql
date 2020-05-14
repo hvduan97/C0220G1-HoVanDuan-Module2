@@ -17,11 +17,17 @@ insert into casestudy.kieuthue(IDKieuThue,TenKieuThue,Gia)
 values(4,'Gio',1);
 
 insert into casestudy.dichvu(IDDichVu,TenDichVu,DienTich,SoTang,SoNguoiToiDa,ChiPhiThue,IDKieuThue,IDLoaiDichVu,TrangThai)
-values(1,'Villa',50,5,'50',15,2,1,'Con Phong');
+values(4,'Villa',50,5,'50',15,2,1,'Con Phong');
 insert into casestudy.dichvu(IDDichVu,TenDichVu,DienTich,SoTang,SoNguoiToiDa,ChiPhiThue,IDKieuThue,IDLoaiDichVu,TrangThai)
-values(2,'House',40,4,'40',10,1,2,'Con Phong');
+values(5,'House',40,4,'40',10,1,2,'Con Phong');
 insert into casestudy.dichvu(IDDichVu,TenDichVu,DienTich,SoTang,SoNguoiToiDa,ChiPhiThue,IDKieuThue,IDLoaiDichVu,TrangThai)
-values(3,'Room',30,3,'30',5,4,3,'Con Phong');
+values(6,'Room',30,3,'30',5,4,3,'Con Phong');
+insert into casestudy.dichvu(IDDichVu,TenDichVu,DienTich,SoTang,SoNguoiToiDa,ChiPhiThue,IDKieuThue,IDLoaiDichVu,TrangThai)
+values(7,'Villa',50,5,'50',15,2,1,'Con Phong');
+insert into casestudy.dichvu(IDDichVu,TenDichVu,DienTich,SoTang,SoNguoiToiDa,ChiPhiThue,IDKieuThue,IDLoaiDichVu,TrangThai)
+values(8,'House',40,4,'40',10,1,2,'Con Phong');
+insert into casestudy.dichvu(IDDichVu,TenDichVu,DienTich,SoTang,SoNguoiToiDa,ChiPhiThue,IDKieuThue,IDLoaiDichVu,TrangThai)
+values(9,'Room',30,3,'30',5,4,3,'Con Phong');
 
 ALTER TABLE casestudy.dichvu
 MODIFY COLUMN ChiPhiThue int;
