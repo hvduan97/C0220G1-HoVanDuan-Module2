@@ -11,7 +11,7 @@
     <title>Search</title>
 </head>
 <body>
-<form action="/search.jsp" method="post">
+<form action="/products" method="post">
     <label for="timkiem">Search</label>
     <input type="text" id="timkiem" name="nsearchname" placeholder="Search">
     <input type="submit" value="Search">

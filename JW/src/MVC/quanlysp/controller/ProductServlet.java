@@ -69,13 +69,29 @@ public class ProductServlet extends HttpServlet {
     }
     private void searchGo(HttpServletRequest request, HttpServletResponse response){
         String name = request.getParameter("nsearchname");
-    }
-    public String removeDuplicateWhitespace(String inputStr) {
-        String patternStr = "\\s+";
-        String replaceStr = " ";
-        Pattern pattern = Pattern.compile(patternStr);
-        Matcher matcher = pattern.matcher(inputStr);
-        return matcher.replaceAll(replaceStr);
+        String abcd=productService.removeDuplicateWhitespace(name);
+        boolean abc=productService.searchName(productService.returnMap(),abcd);
+        String result="";
+        if (abc){
+            result="Tim thay";
+        }
+        else {
+            result="Khong tim thay";
+        }
+        RequestDispatcher dispatcher;
+        if(result == null){
+            dispatcher = request.getRequestDispatcher("MVC/quanlysp/error-404.jsp");
+        } else {
+            request.setAttribute("xyz", result);
+            dispatcher = request.getRequestDispatcher("MVC/quanlysp/resultsearch.jsp");
+        }
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     private void showSearch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("MVC/quanlysp/search.jsp").forward(request,response);

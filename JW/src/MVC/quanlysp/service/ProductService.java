@@ -13,4 +13,6 @@ public interface ProductService {
 
     void remove(int id);
     boolean searchName(Map<Integer,Product> products, String tim);
+    String removeDuplicateWhitespace(String inputStr);
+    Map<Integer, Product> returnMap();
 }

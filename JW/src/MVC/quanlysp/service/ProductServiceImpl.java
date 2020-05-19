@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ProductServiceImpl implements ProductService{
     private static Map<Integer, Product> products;
@@ -52,5 +54,19 @@ public class ProductServiceImpl implements ProductService{
             }
         }
         return  false;
+    }
+
+    @Override
+    public String removeDuplicateWhitespace(String inputStr) {
+        String patternStr = "\\s+";
+        String replaceStr = " ";
+        Pattern pattern = Pattern.compile(patternStr);
+        Matcher matcher = pattern.matcher(inputStr);
+        return matcher.replaceAll(replaceStr);
+    }
+
+    @Override
+    public Map<Integer, Product> returnMap() {
+        return products;
     }
 }
