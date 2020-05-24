@@ -14,14 +14,14 @@ public class Blog {
 
     public Blog() {}
 
-    public Blog(String firstName, String lastName) {
-        this.name = firstName;
-        this.content = lastName;
+    public Blog(String name, String content) {
+        this.name = name;
+        this.content = content;
     }
 
     @Override
     public String toString() {
-        return String.format("Customer[id=%d, firstName='%s', lastName='%s']", id, name, content);
+        return String.format("Customer[id=%d, name='%s', content='%s']", id, name, content);
     }
 
     public Long getId() {
@@ -36,15 +36,15 @@ public class Blog {
         return name;
     }
 
-    public void setName(String firstName) {
-        this.name = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getContent() {
         return content;
     }
 
-    public void setContent(String lastName) {
-        this.content = lastName;
+    public void setContent(String content) {
+        this.content = content;
     }
 }

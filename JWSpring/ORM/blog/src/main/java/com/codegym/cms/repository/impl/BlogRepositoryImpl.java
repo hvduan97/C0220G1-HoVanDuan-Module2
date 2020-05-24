@@ -2,6 +2,7 @@ package com.codegym.cms.repository.impl;
 
 import com.codegym.cms.model.Blog;
 import com.codegym.cms.repository.BlogRepository;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -12,7 +13,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Transactional
-@Service
+@Repository
 public class BlogRepositoryImpl implements BlogRepository {
 
     @PersistenceContext
@@ -34,7 +35,8 @@ public class BlogRepositoryImpl implements BlogRepository {
             return null;
         }
     }
-
+    /*Merge: dùng để cập nhật trạng thái của entity vào cơ sở dữ liệu.
+    * Persist: phương thức này dùng để lưu một thực thể mới tạo vào cơ sở dữ liệu.*/
     @Override
     public void save(Blog model) {
         if(model.getId() != null){
