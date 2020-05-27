@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create film</title>
+</head>
+<body>
+<h1>Create film</h1>
+<p>
+    <a href="/blogs">Film list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-blog}" th:object="${blog}" method="post">
+    <table>
+        <tr>
+            <td>Name's Film:</td>
+            <td><input type="text" th:field="*{name}" placeholder="Name of your film"/></td>
+        </tr>
+        <tr>
+            <td>Content:</td>
+            <td><input type="text" th:field="*{content}" placeholder="Content of film"/></td>
+        </tr>
+        <tr>
+            <td>Date Create:</td>
+            <td><input type="text" th:field="*{day}" placeholder="Date Create"/></td>
+            <td>*(yyyy-mm-dd)</td>
+        </tr>
+        <tr>
+            <td>Category:</td>
+            <td>
+                <select th:field="*{category}">
+                    <option th:each="p : ${categorys}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create film"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

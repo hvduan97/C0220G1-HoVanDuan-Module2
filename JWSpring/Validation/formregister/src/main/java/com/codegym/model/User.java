@@ -18,17 +18,15 @@ public class User {
     private String lastname;
     @Min(18)
     private int age;
-//    @Pattern(regexp="(^$|[0-9]{10})")
-//    @NumberFormat
-//    @Size(min = 10,max = 10)
-    private int phonenumber;
+    @Pattern(regexp="(^$|[0-9]{10})")
+    private String phonenumber;
     @Email
     private String email;
 
     public User() {
     }
 
-    public User(String firstname, String lastname, int age, int phonenumber, String email) {
+    public User(String firstname, String lastname, int age, String phonenumber, String email) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
@@ -60,11 +58,11 @@ public class User {
         this.age = age;
     }
 
-    public int getPhonenumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(int phonenumber) {
+    public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
 

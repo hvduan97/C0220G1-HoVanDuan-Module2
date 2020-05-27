@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span>Tổng tiền: </span>
+<span></span>
+<table border="1">
+    <tr>
+        <td>Tên sp</td>
+        <td>Mã sp</td>
+        <td>Giá sp</td>
+        <td>Hình ảnh sp</td>
+        <td>Số lượng</td>
+        <td>Xóa sp</td>
+    </tr>
+    <tr>
+        <td>
+            <a th:href="@{/product/__${buypro.get().id}__}">
+                <p th:text="${buypro.get().name}"></p>
+            </a>
+
+        </td>
+        <td th:text="${buypro.get().code}"></td>
+        <td th:text="${buypro.get().price}"></td>
+        <td><img  th:src="${buypro.get().pic}" th:width="100" th:height="100">
+        <td th:text="${buypro.get().amount}"></td>
+        <td></td>
+    </tr>
+</table>
+</body>
+</html>

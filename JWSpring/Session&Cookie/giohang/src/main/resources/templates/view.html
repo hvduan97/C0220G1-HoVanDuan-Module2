@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+</head>
+<body>
+<!--<form>-->
+    <table border="1">
+        <tr>
+            <td>Tên sp</td>
+            <td>Mã sp</td>
+            <td>Giá sp</td>
+            <td>Hình ảnh sp</td>
+            <td>Mua hàng</td>
+        </tr>
+        <tr>
+            <td>
+                <a th:href="@{/product/__${viewpro.get().id}__}">
+                    <p th:text="${viewpro.get().name}"></p>
+                </a>
+
+            </td>
+            <td th:text="${viewpro.get().code}"></td>
+            <td th:text="${viewpro.get().price}"></td>
+            <td><img  th:src="${viewpro.get().pic}" th:width="100" th:height="100">
+            <td>
+            <form  th:action="@{/product/__${viewpro.get().id}__}" method="post">
+                <input type="submit" value="Mua hàng">
+            </form></td>
+        </tr>
+    </table>
+<!--</form>-->
+</body>
+</html>
