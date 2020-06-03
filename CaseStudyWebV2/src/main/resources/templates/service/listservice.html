@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách dịch vụ</title>
+</head>
+<body>
+<a href="/create-service">Thêm dịch vụ mới</a>
+<h1>Danh sách dịch vụ</h1>
+<form>
+    Tìm kiếm theo tên:
+    <input name="s" type="text"/>
+    <input type="submit" value="Tìm"/>
+</form><br/>
+<table border="1">
+    <tr>
+        <th>Tên dịch vụ</th>
+        <th>Diện tích</th>
+        <th>Số tầng</th>
+        <th>Số người tối đa</th>
+        <th>Chi phí thuê</th>
+        <th>Trạng thái</th>
+        <th>Loại dịch vụ</th>
+        <th>Kiểu thuê</th>
+        <th>Cập nhật</th>
+        <th>Xóa</th>
+        <th>Lưu</th>
+    </tr>
+    <th:block th:each="service : ${services}">
+        <tr>
+            <td th:text="${service.name}"></td>
+            <td th:text="${service.area}"></td>
+            <td th:text="${service.numberFloor}"></td>
+            <td th:text="${service.maxpeople}"></td>
+            <td th:text="${service.rentCost}"></td>
+            <td th:text="${service.status}"></td>
+            <td th:text="${service.typeService.name}"></td>
+            <td th:text="${service.typeRent.name}"></td>
+            <td><a th:href="@{/edit-service/__${service.id}__ }">Cập nhật</a></td>
+            <td><a th:href="@{/delete-service/__${service.id}__ }">Xóa</a></td>
+            <td><a th:href="@{/like-service/__${service.id}__ }">Thích</a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/services'(page=${services.number - 1})}" th:if="${services.hasPrevious()}">Previous</a>
+    <span th:text="${services.number + 1}"></span>/<span th:text="${services.totalPages}"></span>
+    <a th:href="@{'/services'(page=${services.number + 1})}" th:if="${services.hasNext()}">Next</a>
+</div>
+</body>
+</html>

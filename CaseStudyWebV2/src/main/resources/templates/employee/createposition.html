@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm vị trí mới</title>
+</head>
+<body>
+<h1>Thêm vị trí mới</h1>
+<p>
+    <a href="/customers">Danh sách nhân viên</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-position}" th:object="${positions}" method="post">
+    <table>
+        <tr>
+            <td>Tên vị trí:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Thêm"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

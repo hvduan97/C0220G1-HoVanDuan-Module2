@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{list.h1}"></title>
+</head>
+<body>
+<!--<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">-->
+<!--    <a th:href="@{/customers?lang=en}">(English)</a>-->
+<!--    &nbsp;|&nbsp;-->
+<!--    <a th:href="@{/customers?lang=fr}">(French)</a>-->
+<!--</div>-->
+<a href="/create-customer" th:text="#{list.a}"></a>
+<h1 th:text="#{list.h1}"></h1>
+<table border="1">
+    <tr>
+        <th th:text="#{list.firstname}"></th>
+        <th th:text="#{list.lastname}"></th>
+        <th th:text="#{list.edit}"></th>
+        <th th:text="#{list.delete}"></th>
+    </tr>
+    <th:block th:each="customer : ${customers}">
+        <tr>
+            <td th:text="${customer.firstName}"></td>
+            <td th:text="${customer.lastName}"></td>
+            <td><a th:href="@{/edit-customer/__${customer.id}__ }" th:text="#{list.edit}"></a></td>
+            <td><a th:href="@{/delete-customer/__${customer.id}__ }" th:text="#{list.delete}"></a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm khách hàng mới</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function(){
+            $("#datepicker").datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Thêm khách hàng mới</h1>
+<p>
+    <a href="/customers">Danh sách khách hàng</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-customer}" th:object="${customer}" method="post">
+    <table>
+        <tr>
+            <td>Mã khách hàng:</td>
+            <td><input type="text" th:field="*{code}"/></td>
+            <td th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Tên khách hàng:</td>
+            <td><input type="text" th:field="*{nameCustomer}"/></td>
+        </tr>
+        <tr>
+            <td>Ngày sinh:</td>
+            <td><input type="text" id="datepicker" th:field="*{birthdayCustomer}"/></td>
+            <td th:if="${#fields.hasErrors('birthdayCustomer')}" th:errors="*{birthdayCustomer}">Name Error</td>
+        </tr>
+        <tr>
+            <td>CMND:</td>
+            <td><input type="text" th:field="*{idCard}"/></td>
+            <td th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}">Name Error</td>
+        </tr>
+        <tr>
+            <td>SĐT:</td>
+            <td><input type="text" th:field="*{phone}"/></td>
+            <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Địa chỉ:</td>
+            <td><input type="text" th:field="*{address}"/></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" th:field="*{email}"/></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Loại khách hàng:</td>
+            <td>
+                <select th:field="*{typeCustomer}">
+                    <option th:each="p : ${typecustomers}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Thêm"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

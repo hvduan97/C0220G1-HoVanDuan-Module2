@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm dịch vụ mới</title>
+</head>
+<body>
+<h1>Thêm dịch vụ mới</h1>
+<p>
+    <a href="/services">Danh sách dịch vụ</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-service}" th:object="${services}" method="post">
+    <table>
+        <tr>
+            <td>Mã dịch vụ:</td>
+            <td><input type="text" th:field="*{code}"/></td>
+        </tr>
+        <tr>
+            <td>Tên dịch vụ:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Diện tích:</td>
+            <td><input type="text" th:field="*{area}"/></td>
+        </tr>
+        <tr>
+            <td>Số tầng:</td>
+            <td><input type="text" th:field="*{numberFloor}"/></td>
+        </tr>
+        <tr>
+            <td>Số người tối đa:</td>
+            <td><input type="text" th:field="*{maxpeople}"/></td>
+        </tr>
+        <tr>
+            <td>Chi phí thuê:</td>
+            <td><input type="text" th:field="*{rentCost}"/></td>
+        </tr>
+        <tr>
+            <td>Trạng thái:</td>
+            <td><input type="text" th:field="*{status}"/></td>
+        </tr>
+        <tr>
+            <td>Loại dịch vụ:</td>
+            <td>
+                <select th:field="*{typeService}">
+                    <option th:each="p : ${typeservices}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Kiểu thuê:</td>
+            <td>
+                <select th:field="*{typeRent}">
+                    <option th:each="p : ${typerents}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Thêm"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

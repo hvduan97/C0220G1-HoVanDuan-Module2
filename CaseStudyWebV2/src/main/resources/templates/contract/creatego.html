@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm dịch vụ đi kèm mới</title>
+</head>
+<body>
+<h1>Thêm dịch vụ đi kèm mới</h1>
+<p>
+    <a href="/customers">Danh sách dịch vụ đi kèm</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-go}" th:object="${gofollows}" method="post">
+    <table>
+        <tr>
+            <td>Tên dịch vụ đi kèm:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Giá dịch vụ đi kèm:</td>
+            <td><input type="text" th:field="*{price}"/></td>
+        </tr>
+        <tr>
+            <td>Đơn vị:</td>
+            <td><input type="text" th:field="*{donvi}"/></td>
+        </tr>
+        <tr>
+            <td>Trạng thái:</td>
+            <td><input type="text" th:field="*{status}"/></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Thêm"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

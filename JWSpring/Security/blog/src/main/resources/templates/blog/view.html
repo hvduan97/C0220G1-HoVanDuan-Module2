@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Watch film</title>
+</head>
+<body>
+<h1>Watch Film</h1>
+<p>
+    <a href="/blogs">Film list</a>
+</p>
+<div>
+        <table>
+            <td>
+                <tr>Category: </tr>
+                <tr th:text= " ${blog.category.name}"></tr>
+            </td>
+        </table>
+        <p th:text="${blog.getName()}"></p>
+        <p>.............................................</p>
+        <p th:text="${blog.getContent()}"></p>
+</div>
+</body>
+</html>

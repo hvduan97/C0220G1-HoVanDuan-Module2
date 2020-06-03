@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm hợp đồng mới</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function(){
+            $("#datepicker").datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+        $(function(){
+            $("#datepicker2").datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Thêm hợp đồng mới</h1>
+<p>
+    <a href="/customers">Danh sách hợp đồng</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-contract}" th:object="${contracts}" method="post">
+    <table>
+        <tr>
+            <td>Ngày làm hợp đồng:</td>
+            <td><input type="text" id="datepicker" th:field="*{dayBeginContract}"/></td>
+            <td th:if="${#fields.hasErrors('dayBeginContract')}" th:errors="*{dayBeginContract}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Ngày kết thúc hợp đồng:</td>
+            <td><input type="text" id="datepicker2" th:field="*{dayEndContract}"/></td>
+            <td th:if="${#fields.hasErrors('dayEndContract')}" th:errors="*{dayEndContract}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Tiền đặt cọc:</td>
+            <td><input type="text" th:field="*{deposits}"/></td>
+            <td th:if="${#fields.hasErrors('deposits')}" th:errors="*{deposits}">Name Error</td>
+        </tr>
+<!--        <tr>-->
+<!--            <td>Tồng tiền:</td>-->
+<!--            <td><input type="text" th:field="*{sum}"/></td>-->
+<!--            <td th:if="${#fields.hasErrors('sum')}" th:errors="*{sum}">Name Error</td>-->
+<!--        </tr>-->
+
+        <tr>
+            <td>Tên khách hàng:</td>
+            <td>
+                <select th:field="*{customer}">
+                    <option th:each="p : ${customers}" th:value="${p.id}" th:text="${p.nameCustomer}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Tên dịch vụ:</td>
+            <td>
+                <select th:field="*{service}">
+                    <option th:each="p : ${services}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Tên nhân viên:</td>
+            <td>
+                <select th:field="*{employee}">
+                    <option th:each="p : ${employees}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Thêm"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Xóa dịch vụ</title>
+</head>
+<body>
+<h1>Xóa dịch vụ</h1>
+<h2>Bạn có chắc chắn muốn xóa?</h2>
+<p>
+    <a href="/services">Danh sách dịch vụ</a>
+</p>
+<form th:action="@{/delete-service}" th:object="${service}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Tên dịch vụ:</td>
+            <td th:text="${service.name}"></td>
+        </tr>
+        <tr>
+            <td>Mã dịch vụ:</td>
+            <td th:text="${service.code}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Xóa"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

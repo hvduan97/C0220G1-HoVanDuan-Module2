@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{create.createcustomer}"></title>
+</head>
+<body>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a th:href="@{/create-customer?lang=en}">(English)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/create-customer?lang=fr}">(French)</a>
+</div>
+<h1 th:text="#{create.createcustomer}"></h1>
+<p>
+    <a href="/customers" th:text="#{create.listcustomer}"></a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-customer}" th:object="${customer}" method="post">
+    <table>
+        <tr>
+            <td th:text="#{create.firstname}"></td>
+            <td><input type="text" th:field="*{firstName}"/></td>
+        </tr>
+        <tr>
+            <td th:text="#{create.lastname}"></td>
+            <td><input type="text" th:field="*{lastName}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" th:value="#{create.createcustomer}"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

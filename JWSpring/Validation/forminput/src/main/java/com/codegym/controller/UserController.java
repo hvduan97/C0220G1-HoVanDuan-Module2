@@ -24,7 +24,7 @@ public class UserController {
             ModelAndView modelAndView = new ModelAndView("index");
             return modelAndView;
         }
-        ModelAndView modelAndView = new ModelAndView("result");
+        ModelAndView modelAndView = new ModelAndView("index");
         return modelAndView;
     }
 

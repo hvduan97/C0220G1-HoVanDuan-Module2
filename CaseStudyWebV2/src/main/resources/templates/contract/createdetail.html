@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm hợp đồng chi tiết mới</title>
+</head>
+<body>
+<h1>Thêm hợp đông chi tiết mới mới</h1>
+<p>
+    <a href="/customers">Danh sách hợp đồng chi tiết</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-detail}" th:object="${details}" method="post">
+    <table>
+        <tr>
+            <td>Số lượng:</td>
+            <td><input type="text" th:field="*{amount}"/></td>
+            <td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Dịch vụ đi kèm:</td>
+            <td>
+                <select th:field="*{goFollow}">
+                    <option th:each="p : ${gofollows}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Id Hợp đồng:</td>
+            <td>
+                <select th:field="*{contract}">
+                    <option th:each="p : ${contracts}" th:value="${p.id}" th:text="${p.id}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Thêm"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

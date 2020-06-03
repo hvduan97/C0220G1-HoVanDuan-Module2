@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/create-customer">Thêm khách hàng mới</a>
+<h1>Danh sách khách hàng</h1>
+<form>
+    Tìm kiếm theo tên:
+    <input name="s" type="text"/>
+    <input type="submit" value="Tìm"/>
+</form><br/>
+<table border="1">
+    <tr>
+        <th>Tên khách hàng</th>
+        <th>Ngày sinh</th>
+        <th>Điện thoại</th>
+        <th>CMND</th>
+        <th>Email</th>
+        <th>Địa chỉ</th>
+        <th>Cập nhật</th>
+        <th>Xóa</th>
+    </tr>
+    <th:block th:each="customer : ${customers}">
+        <tr>
+            <td th:text="${customer.nameCustomer}"></td>
+            <td th:text="${customer.birthdayCustomer}"></td>
+            <td th:text="${customer.phone}"></td>
+            <td th:text="${customer.idCard}"></td>
+            <td th:text="${customer.email}"></td>
+            <td th:text="${customer.address}"></td>
+            <td><a th:href="@{/edit-customer/__${customer.id}__ }">Cập nhật</a></td>
+            <td><a th:href="@{/delete-customer/__${customer.id}__ }">Xóa</a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/customers'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
+    <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
+    <a th:href="@{'/customers'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
+</div>
+</body>
+</html>
