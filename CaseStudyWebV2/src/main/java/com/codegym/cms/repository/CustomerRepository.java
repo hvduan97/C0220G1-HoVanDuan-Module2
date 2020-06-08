@@ -6,5 +6,5 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface CustomerRepository extends PagingAndSortingRepository<Customer,Long> {
-    Page<Customer> findAllByNameCustomerContaining(String name, Pageable pageable);
+    Page<Customer> findAllByNameCustomerContainingOrBirthdayCustomerContaining(String name,String birth, Pageable pageable);
 }

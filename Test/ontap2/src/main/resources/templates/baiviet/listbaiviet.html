@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/create-baiviet">Thêm bài viết mới</a>
+<h1>Danh sách bài viết</h1>
+<form>
+    Tìm kiếm:
+    <input name="s" type="text"/>
+    <input type="submit" value="Search"/>
+</form><br/>
+<table border="1">
+    <tr>
+        <th>Tên</th>
+        <th>Ngày sinh</th>
+        <th>Tỉnh</th>
+        <th>Cập nhật</th>
+        <th>Xóa</th>
+    </tr>
+    <th:block th:each="customer : ${baiviets}">
+        <tr>
+            <td th:text="${customer.ten}"></td>
+            <td th:text="${customer.ngaysinh}"></td>
+            <td th:text="${customer.tinh.tenTinh}"></td>
+            <td><a th:href="@{/edit-baiviet/__${customer.id}__ }">Cập nhật</a></td>
+            <td><a th:href="@{/delete-baiviet/__${customer.id}__ }">Xóa</a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/baiviets'(page=${baiviets.number - 1},s=${keyword})}" th:if="${baiviets.hasPrevious()}">Previous</a>
+    <span th:text="${baiviets.number + 1}"></span>/<span th:text="${baiviets.totalPages}"></span>
+    <a th:href="@{'/baiviets'(page=${baiviets.number + 1},s=${keyword})}" th:if="${baiviets.hasNext()}">Next</a>
+</div>
+</body>
+</html>

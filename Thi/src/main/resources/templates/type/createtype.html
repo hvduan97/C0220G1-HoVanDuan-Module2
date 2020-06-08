@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm loại hàng mới</title>
+
+</head>
+<body>
+<h1>Thêm loại hàng mới</h1>
+
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-type}" th:object="${type}" method="post">
+    <table>
+        <tr>
+            <td>Tên:</td>
+            <td><input type="text" th:field="*{ten}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Thêm"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cập nhật thông tin bài viết</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function(){
+            $("#datepicker").datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Cập nhật thông tin bài viết</h1>
+<p>
+    <a href="/baiviets">Danh sách bài viết</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-baiviet}" th:object="${baiviet}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Tên:</td>
+            <td><input type="text" th:field="*{ten}"/></td>
+        </tr>
+        <tr>
+            <td>Ngày sinh:</td>
+            <td><input type="text" id="datepicker" th:field="*{ngaysinh}"/></td>
+        </tr>
+        <tr>
+            <td>Tỉnh/Thành phố:</td>
+            <td>
+                <select th:field="*{tinh}">
+                    <option th:each="p : ${tinhs}" th:value="${p.id}" th:text="${p.tenTinh}"></option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Chập nhật"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

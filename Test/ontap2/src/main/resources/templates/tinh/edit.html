@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cập nhật thông tin tỉnh</title>
+</head>
+<body>
+<h1>Cập nhật thông tin tỉnh</h1>
+<p>
+    <a href="/tinhs">Danh sách tỉnh</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-tinh}" th:object="${tinh}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Tên tỉnh:</td>
+            <td><input type="text" th:field="*{tenTinh}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Chập nhật"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

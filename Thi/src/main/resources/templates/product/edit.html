@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cập nhật thông tin mặt hàng</title>
+
+</head>
+<body>
+<h1>Cập nhật thông tin mặt hàng</h1>
+<p>
+    <a href="/products">Danh sách mặt hàng</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-product}" th:object="${product}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Tên hàng:</td>
+            <td><input type="text" th:field="*{ten}"/></td>
+            <td th:if="${#fields.hasErrors('ten')}" th:errors="*{ten}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Giá:</td>
+            <td><input type="text" id="datepicker" th:field="*{gia}"/></td>
+            <td th:if="${#fields.hasErrors('gia')}" th:errors="*{gia}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Số lượng:</td>
+            <td><input type="text" th:field="*{soluong}"/></td>
+            <td th:if="${#fields.hasErrors('soluong')}" th:errors="*{soluong}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Mô tả:</td>
+            <td><input type="text" th:field="*{mota}"/></td>
+            <td th:if="${#fields.hasErrors('mota')}" th:errors="*{mota}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Loại hàng:</td>
+            <td>
+                <select th:field="*{type}">
+                    <option th:each="p : ${type}" th:value="${p.id}" th:text="${p.ten}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Chỉnh sửa"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

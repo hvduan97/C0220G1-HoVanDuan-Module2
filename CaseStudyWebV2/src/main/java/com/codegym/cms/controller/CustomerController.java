@@ -49,7 +49,7 @@ public class CustomerController {
 //        Page<Customer> customers=customerService.findAll(pageable);
         Page<Customer> customers;
         if(s.isPresent()){
-            customers = customerService.findAllByNameCustomerContaining(s.get(), pageable);
+            customers = customerService.findAllByNameCustomerContainingOrBirthdayCustomerContaining(s.get(),s.get(), pageable);
         } else {
             customers = customerService.findAll(pageable);
         }

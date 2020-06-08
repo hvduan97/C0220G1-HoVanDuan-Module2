@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/create-tinh">Thêm tỉnh mới</a>
+<h1>Danh sách tỉnh</h1>
+<table border="1">
+    <tr>
+        <th>Tên tỉnh</th>
+        <th>Cập nhật</th>
+        <th>Xóa</th>
+    </tr>
+    <th:block th:each="tinh : ${tinhs}">
+        <tr>
+            <td th:text="${tinh.tenTinh}"></td>
+            <td><a th:href="@{/edit-tinh/__${tinh.id}__ }">Cập nhật</a></td>
+            <td><a th:href="@{/delete-tinh/__${tinh.id}__ }">Xóa</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

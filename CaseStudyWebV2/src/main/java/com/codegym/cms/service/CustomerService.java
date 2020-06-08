@@ -14,5 +14,5 @@ public interface CustomerService {
 
     void remove(Long id);
 
-    Page<Customer> findAllByNameCustomerContaining(String name, Pageable pageable);
+    Page<Customer> findAllByNameCustomerContainingOrBirthdayCustomerContaining(String name,String birth, Pageable pageable);
 }
