@@ -1,0 +1,30 @@
+*CÀI ĐẶT BOOTSTRAP:
+npm install bootstrap
+"styles": [
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "styles.scss"
+]
+@import '~bootstrap/dist/css/bootstrap.min.css';
+npm install --save @ng-bootstrap/ng-bootstrap
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+*TRƯỜNG HỢP TẠO COMPONENT KHI CÓ NHIỀU MODULE
+ng g c tencomponent --module tenmodulemuonthem
+
+*TẠO SERVER JSON
+npm install -g json-server
+json-server --watch db.json
+
+*SEARCH
+npm i ng2-search-filter --save
+Ng2SearchPipeModule
+
+*SORT
+npm install ng2-order-pipe --save
+Ng2OrderModule
+
+*PAGING
+npm install ngx-pagination --save
+NgxPaginationModule
+
+
