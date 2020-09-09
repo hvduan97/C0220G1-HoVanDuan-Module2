@@ -1,0 +1,48 @@
+Product Owner
+Trình bày rõ và sắp xếp thứ tự ưu tiên các hạng mục Product Backlog(Nơi lưu trữ các tính năng mong muốn của sp, user story: là.. mong muốn.. để)
+Nhiệm vụ chính của Product Owne Quản lý Product Backlog
+Hiểu rõ về tầm nhìn của sản phẩm
+Tối ưu hóa giá trị của công việc được thực hiện bởi Nhóm Phát triển
+Trao quyền quyết định; Hiểu biết về lĩnh vực của sản phẩm; Có đủ thời gian làm việc; Có kỹ năng giao tiếp, thương lượng
+
+
+
+ScrumMaster
+Một vai trò trong Nhóm Scrum
+Lãnh đạo mang phong cách phục vụ
+Đảm bảo sử dụng đúng Scrum, Tháo gỡ khó khăn, Trợ giúp Product Owner
+Nhóm Phát triển hay Product Owner không hiểu đúng về Scrum thì ScrumMaster: Đào tạo Scrum cho họ
+Dạy Nhóm Phát triển cách tổ chức Scrum Hằng ngày gói gọn trong 15 phút
+Tạo điều kiện cho các quyết định của Nhóm Phát triển và loại bỏ các trở ngại
+ScrumMaster không nhất thiết phải tham dự mà chỉ cần đảm bảo rằng Nhóm Phát triển có tiến hành buổi Scrum Hằng ngày
+Làm việc toàn thời gian, Am hiểu Scrum, Giao tiếp tốt
+
+
+Nhóm Phát triển
+Chuyển giao phần tăng trưởng ở cuối Sprint
+Tự tổ chức và Liên chức năng
+Nhóm được trang bị đầy đủ các kỹ năng cần thiết để chuyển giao phần tăng trưởng cuối mỗi Sprint
+Tính ổn định cao
+Chuyển các hạng mục Product Backlog mà họ đã chọn thành một chức năng của sản phẩm có khả năng chuyển giao được
+Thông báo với Product Owner để Product Owner làm việc trực tiếp với CEO
+Hoàn thiện toàn bộ kiến trúc và cơ sở hạ tầng
+
+Phần tăng trưởng
+Phần sản phẩm tạo ra được sau mỗi sprint
+Sử dụng được, chuyển giao được và hoàn thành các tiêu chí trong định nghĩa hoàng thành
+
+Định nghĩa hoàn thành
+Quy định, thống nhất chung cho cái gọi là hoàn thành
+
+Srum được xây dựng dựa trên thuyết thực nghiệm, mọi tri thức đều đến từ kinh nghiệm
+
+3 trụ cột scrum:
+Minh bạch: hiển thị rõ ràng(giảm rủi ro, tăng chính xác)
+Thanh tra:(thường xuyên tạo tác và tiến độ để kiểm tra điểm bất thường)
+Thích nghi:(phát hiện vấn đề, có ý tưởng mới > điều chỉnh cho phù hợp)
+
+Sự kiện scrum
+Lập kế hoạch hàng ngày: đưa ra mục tiêu và tạo sprint backlog
+Scrum hàng ngày: đồng bộ và tái lập kế hoạch, trả lời 3 câu hỏi: tôi đã làm được gì? tôi sẽ làm gì? tôi đang gặp khó khăn gì?
+Sơ kết sprint: tiến hành khi sprint kết thức để kiểm tra độ tăng trưởng trong sprint vừa qua, nhóm pt và product owner trao đổi và phát triển sp, mục đích là thanh tra và thích nghi sp
+Cải tiến sprint: thanh tra, thích nghi và tìm ra cách làm tốt hơn trong sprint tới, sử dụng kỹ thuật glad-sad-mad
