@@ -1,0 +1,10 @@
+Hướng dẫn cài đặt Spring Security (sử dụng all hỗ trợ của framework):
+- /login (Spring security)
+- /logout (Spring security)
+- /register: Đăng ký user theo role ADMIN hoặc MEMBER
+- /admin: chỉ có role ADMIN
+- /member: role ADMIN, MEMBER
+* Quản lý session: (/home)
+- Sử dụng thư viện thymeleaf-extras-springsecurity5 -> build.gradle)
+- Sử dụng prefix xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+Ví dụ: sec:authentication="name" (trả về username), sec:authorize="isAuthenticated()" (check xem đã có user login hay chưa)

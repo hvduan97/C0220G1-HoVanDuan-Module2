@@ -1,6 +1,6 @@
 create database casestudy;
 create table casestudy.Vitri(
-	IDViTri int not null primary key,
+	IDViTri int not null primary key auto_increment,
     TenViTri varchar(45)
 );
 
